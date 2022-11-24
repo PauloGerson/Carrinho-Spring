@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<form th:action="@{/produto/save}"  th:object="${produto}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <input type="text" th:field="*{descricao}"  placeholder="Nome">
+    <input type="text" th:field="*{valor}"  placeholder="Nome">
+    <input type="submit" value="Enviar">
+</form>
+
+</body>
+</html>

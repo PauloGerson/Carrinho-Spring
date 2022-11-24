@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html  lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <table class="table" border="1">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Qtd</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+
+            <tr th:each="i,s : ${session.venda.itensVenda}" >
+                <td th:text="${i.produto.descricao}"></td>
+                <td th:text="${i.produto.valor}"></td>
+                <td th:text="${i.qtd}"></td>
+                <td th:text="${i.total()}"></td>
+
+               <td> <a class="delete" onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"  th:href="@{/venda/remove/{id}(id=${s.index})}">Excluir</a> </td>
+
+            </tr>
+
+        </table>
+        <td> <a th:href="@{/venda/clear}" >Limpar</a><td>
+
+    <script>
+        const load = document.querySelector(".delete");
+
+        /*load.addEventListener('click', function (event){
+            event.preventDefault();
+        })*/
+    </script>
+
+    </body>
+</html>

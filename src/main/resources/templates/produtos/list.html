@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table class="table" border="1">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Valor</th>
+        <th>Quantidade</th>
+    </tr>
+    </thead>
+    <tr th:each="p : ${produtos}">
+       <td th:text="${p.descricao}"></td>
+        <td th:text="${p.valor}"></td>
+        <form th:action="@{/venda/carrinho}" th:object="${itemVenda}" method="get">
+            <input type="hidden" th:name="produto.id" th:value="${p.id}">
+            <td><input th:field="*{qtd}" style="width: 3rem;" type="number"></td>
+            <td><input type="submit" value="Enviar"></td>
+        </form>
+
+    </tr>
+
+</table>
+<!--<p th:text="${session.venda.itensVenda.size()}"></p>-->
+</body>
+</html>
